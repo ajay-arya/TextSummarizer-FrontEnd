@@ -15,16 +15,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { HomeComponent } from './home/home.component';
+import { RootComponent } from './pages/root/root.component';
+import { PdfComponent } from './uploads/pdf/pdf.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    RootComponent,
+    PdfComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    HttpClientModule,
     CommonModule,
     MatCheckboxModule,
     MatSliderModule,
