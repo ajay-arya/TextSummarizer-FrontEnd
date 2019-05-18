@@ -10,6 +10,8 @@ import { MatFormField } from '@angular/material';
 export class ServerService {
   url = 'http://0.0.0.0:88/api';
   mainURL = this.url;
+  summary = 'summmary writesomethiggdsjgklsg   gkdsgnksggd  kdsgksg ggsdkd  dgd';
+  data = 'data  anrejkdgsd sdnsdns sdjnsdng dsdnsdg fksdgksdngksndgsgsegnksg gesgsd sdgskgmgmewg';
 
   constructor(private http: HttpClient, private router: Router) { }
 

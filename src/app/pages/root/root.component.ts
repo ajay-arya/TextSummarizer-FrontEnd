@@ -29,14 +29,14 @@ import { DomSanitizer } from '@angular/platform-browser';
   // tslint:disable-next-line:max-line-length
   constructor(private router: Router, private server: ServerService, private render: Renderer2, private el: ElementRef, private sanitizer: DomSanitizer) {
     this.textFlag = true;
-    this.iframe = sanitizer.bypassSecurityTrustResourceUrl('https://www.google.com');
+    this.iframe = sanitizer.bypassSecurityTrustResourceUrl('https://www.indiannicalearning.com/');
     // this.iframe = 'https://www.google.com';
-    // this.iframe = sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
+    // this.iframe = sanitizer.bypassSecurityTrustResourceUrl(thi s.urlReference.link);
   }
 
   ngOnInit() {
     const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
-    // this.render.addClass(viewElement, 'none');
+    this.render.addClass(viewElement, 'none');
   }
 
   hover(cardNum) {

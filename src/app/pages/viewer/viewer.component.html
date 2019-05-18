@@ -3,16 +3,21 @@
     Summary
   </div>
   <div class="icon-container">
-    <div id="switch">
-        <a href="#" class="float">
+    <div (click) = "switcher()" id="switch">
+        <div class="float">
           <i class="fa fa-eye eye" aria-hidden="true" title="Click to Switch between View and Summary"></i>
-        </a>
+        </div>
     </div>
     <div id="stats">
     </div>
   </div>
   
-  <div class="view-doc">
-    
+  <div *ngIf="dataFlag" class="view-doc ">
+      {{ data }}
   </div>
+  <div *ngIf="!dataFlag" class="view-doc ">
+    {{ summary }}
+  </div>
+
+
 </div>  

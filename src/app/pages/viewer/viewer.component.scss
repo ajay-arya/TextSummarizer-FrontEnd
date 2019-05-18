@@ -7,19 +7,7 @@
     z-index: -1;
 }
 
-.view-doc {
-    width: 70%;
-    position: relative;
-    height: 100%;
-    z-index: 1;
-    background-color: rgb(245, 245, 245);
-    margin: 140px auto 0 auto;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 1px 23px #212121e8;
-    overflow: auto;
 
-}
 
 // .icon-container {
 //     float: right;
@@ -68,3 +56,17 @@
     top: 08%;
     transform: translate(-50%, -50%);
 }
+.view-doc {
+    width: 70%;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    background-color: rgb(245, 245, 245);
+    margin: 140px auto 0 auto;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 1px 23px #212121e8;
+    overflow: auto;
+
+}
+
