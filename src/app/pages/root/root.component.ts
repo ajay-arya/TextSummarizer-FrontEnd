@@ -20,6 +20,7 @@ import { ServerService } from 'src/app/service/server.service';
     link: '',
     data: 'abc'
   };
+  message = 'Hi, NoObs..';
 
   constructor(private router: Router, private server: ServerService, private render: Renderer2, private el: ElementRef) { }
 
@@ -149,7 +150,6 @@ import { ServerService } from 'src/app/service/server.service';
 
   viewText() {
     console.log(this.urlReference.data);
-
   }
 
 }
