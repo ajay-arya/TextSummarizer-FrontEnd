@@ -5,8 +5,9 @@ import { RootComponent } from './pages/root/root.component';
 import { PdfComponent } from './uploads/pdf/pdf.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'uploadPdf', component: PdfComponent },
-  { path: '', component: RootComponent}
+  { path: 'home', component: RootComponent }
 ];
 
 @NgModule({

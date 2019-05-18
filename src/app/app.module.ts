@@ -8,7 +8,8 @@ import {
   MatButtonModule,
   MatCheckboxModule,
   MatSliderModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { RootComponent } from './pages/root/root.component';
 import { PdfComponent } from './uploads/pdf/pdf.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatSliderModule,
     MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
     BrowserAnimationsModule,
     PdfViewerModule
   ],

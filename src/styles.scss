@@ -1,7 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-body
-{
+
+@font-face {
+    font-family: 'nr';
+    src: URL("assets/fonts/Niconne-Regular.ttf") format("opentype");
+}
+
+body {
+    // font-family: vr;
+    // font-size: 14px;
+    font-weight: 400;
     background-color: #e2e2e2;
+}
+
+.none {
+    display: none;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    // background: #f1f1f1;
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(177, 176, 176);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

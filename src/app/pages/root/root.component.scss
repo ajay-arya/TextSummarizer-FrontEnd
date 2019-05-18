@@ -1,25 +1,115 @@
-.item-container {
+.welcome {
+    color: whitesmoke;
+    margin: 25px 25px 25px -25px;
+    font-size: 80px;
+}
 
-    width: 70%;
-
-    background-image: linear-gradient(to right bottom, #1a9ecd, #1a98c6, #1b93be, #1b8db7, #1b88b0, #2186ab, #2683a6, #2a81a1, #33819e, #3a809a, #408097, #467f94);
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    // background-image: url('assets/png/link.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
 }
 
 .CardContents {
     top: 50%;
     left: 50%;
     position: absolute;
-    color: whitesmoke;
+    color: #ee9166;
+    // ee9166
     font-size: 53px;
-    transform: translate(-50%,-50%);
+    transition: all 0.3s ease-in-out;
+    transform: translate(-50%, -50%);
 }
 
+.moveTextUp {
+    transition: all 0.3s ease-in-out;
+    transform: translate(-50%, -90%);
+}
+
+.pertext {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    color: black;
+    width: 100%;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    font-size: 20px;
+    // width: 100%;
+    opacity: 0;
+    transform: translate(-50%, -20%);
+}
+
+.pertextShow {
+    transform: translate(-50%, 5%);
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.dialogPdf {
+    width: 600px;
+    height: 200px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    border-radius: 5px;
+    background: whitesmoke;
+    transform: translate(-50%, -50%);
+    padding: 24px 50px 50px 50px;
+}
+
+.dialogBG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.58);
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.waitImg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    height: 200px;
+    border-radius: 5px;
+    background: white;
+    transform: translate(-50%, -50%);
+}
+
+.imgWrapper {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.dialogBGHide {
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+
 .headbg {
-    background-image: linear-gradient(to right bottom, #1a9ecd, #1a98c6, #1b93be, #1b8db7, #1b88b0, #2186ab, #2683a6, #2a81a1, #33819e, #3a809a, #408097, #467f94);
+    // background: #ee9166;
+    background-image: linear-gradient(to bottom, #2f4a72, #335d8d, #3271a9, #2c86c5, #189ce1);
+    // background-image: linear-gradient(to right bottom, #1a9ecd, #1a98c6, #1b93be, #1b8db7, #1b88b0, #2186ab, #2683a6, #2a81a1, #33819e, #3a809a, #408097, #467f94);
     position: absolute;
     width: 100%;
     height: 80%;
     z-index: -1;
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.43);
 }
 
 .viewer {
@@ -72,9 +162,9 @@
 
 .box {
     width: 70%;
-    height: 200px;
+    height: 150px;
     background: #FFF;
-    margin: 40px auto;
+    margin: 25px auto;
 
 }
 
@@ -96,8 +186,9 @@
 }
 
 .card {
-    border-radius: 20px;
-    background: #bb4212;
+    border-radius: 8px;
+    background: #f5f5f5;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.288);
 }
 
 #pdf-card,
@@ -111,4 +202,121 @@
 #text-card:hover {
     transform: scale(1.1);
     cursor: pointer;
+}
+
+// File Choose Styles
+
+
+.file-upload {
+    display: block;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+.file-upload .file-select {
+    display: block;
+    border: 2px solid #dce4ec;
+    color: #34495e;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    background: #FFFFFF;
+    overflow: hidden;
+    position: relative;
+}
+
+.file-upload .file-select .file-select-button {
+    background: #dce4ec;
+    padding: 0 10px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+
+.file-upload .file-select .file-select-name {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.file-upload .file-select:hover {
+    border-color: #34495e;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.file-upload .file-select:hover .file-select-button {
+    background: #34495e;
+    color: #FFFFFF;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.file-upload.active .file-select {
+    border-color: #3fa46a;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.file-upload.active .file-select .file-select-button {
+    background: #3fa46a;
+    color: #FFFFFF;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.file-upload .file-select input[type=file] {
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.file-upload .file-select.file-select-disabled {
+    opacity: 0.65;
+}
+
+.file-upload .file-select.file-select-disabled:hover {
+    cursor: default;
+    display: block;
+    border: 2px solid #dce4ec;
+    color: #34495e;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 5px;
+    text-align: left;
+    background: #FFFFFF;
+    overflow: hidden;
+    position: relative;
+}
+
+.file-upload .file-select.file-select-disabled:hover .file-select-button {
+    background: #dce4ec;
+    color: #666666;
+    padding: 0 10px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+
+.file-upload .file-select.file-select-disabled:hover .file-select-name {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 10px;
 }

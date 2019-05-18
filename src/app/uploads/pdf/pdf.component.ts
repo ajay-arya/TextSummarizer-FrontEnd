@@ -8,9 +8,9 @@ import { ServerService } from 'src/app/service/server.service';
 })
 export class PdfComponent implements OnInit {
   file: any;
+  FiletoUpload = new FormData();
   pdf: any = 'assets/NO_FILE.pdf';
   value;
-  FiletoUpload = new FormData();
 
   constructor(private server: ServerService) { }
 
