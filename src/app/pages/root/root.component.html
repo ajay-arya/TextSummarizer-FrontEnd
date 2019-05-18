@@ -61,7 +61,25 @@
     </div>
 
     <div class="row viewer">
-      <pdf-viewer src="{{pdf}}" [render-text]="true" [fit-to-page]="true" style="display: block;"></pdf-viewer>
+      <pdf-viewer *ngIf="!textFlag" src="{{pdf}}" [render-text]="true" [fit-to-page]="true" style="display: block;">
+      </pdf-viewer>
+      <div *ngIf="textFlag">
+
+
+
+
+
+        <!-- {{ urlReference.data }} -->
+        <iframe [src] = "{{iframe}} | safe">
+          Sorry your browser does not support inline frames.
+       </iframe>
+
+
+
+
+
+
+      </div>
     </div>
   </div>
 </div>
@@ -76,7 +94,6 @@
       <div class="file-select">
         <div class="file-select-button" id="fileName">Choose File</div>
         <div class="file-select-name" id="noFile">{{ pdfSelected }}</div>
-        <!-- <div class="file-select-name star none" id="noFile">File Selected.</div> -->
         <input type="file" accept=".pdf" name="chooseFile" id="chooseFile" (change)="onFileSelected($event)">
       </div>
     </div> <br>

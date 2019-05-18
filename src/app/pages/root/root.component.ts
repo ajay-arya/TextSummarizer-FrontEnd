@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/service/server.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { ServerService } from 'src/app/service/server.service';
 
 ) export class RootComponent implements OnInit {
   file: any;
+  textFlag = false;
   FiletoUpload = new FormData();
   hoverBox = false;
   pdfSelected = 'No file chosen...';
@@ -21,13 +23,20 @@ import { ServerService } from 'src/app/service/server.service';
     link: '',
     data: 'abc'
   };
-  message = 'Hi, NoObs..';
+  iframe: any;
+  message = 'Hello ..!';
 
-  constructor(private router: Router, private server: ServerService, private render: Renderer2, private el: ElementRef) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private router: Router, private server: ServerService, private render: Renderer2, private el: ElementRef, private sanitizer: DomSanitizer) {
+    this.textFlag = true;
+    this.iframe = sanitizer.bypassSecurityTrustResourceUrl('https://www.google.com');
+    // this.iframe = 'https://www.google.com';
+    // this.iframe = sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
+  }
 
   ngOnInit() {
     const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
-    this.render.addClass(viewElement, 'none');
+    // this.render.addClass(viewElement, 'none');
   }
 
   hover(cardNum) {
@@ -61,8 +70,6 @@ import { ServerService } from 'src/app/service/server.service';
   }
 
   viewElement() {
-    const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
-    this.render.removeClass(viewElement, 'none');
     // tslint:disable-next-line:new-parens
     const reader = new FileReader;
 
@@ -96,10 +103,20 @@ import { ServerService } from 'src/app/service/server.service';
       this.render.addClass(mainRow, 'none');
       const submitBtn = this.el.nativeElement.getElementsByClassName('SubmitDiv')[0];
       this.render.removeClass(submitBtn, 'none');
+      const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
+      this.render.removeClass(viewElement, 'none');
       this.viewElement();
     }
     if (flag === 3) {
       this.viewText();
+      this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
+      this.textFlag = true;
+      const mainRow = this.el.nativeElement.getElementsByClassName('mainDiv')[0];
+      this.render.addClass(mainRow, 'none');
+      const submitBtn = this.el.nativeElement.getElementsByClassName('SubmitDiv')[0];
+      this.render.removeClass(submitBtn, 'none');
+      const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
+      this.render.removeClass(viewElement, 'none');
     }
   }
 
