@@ -13,8 +13,9 @@ import { ServerService } from 'src/app/service/server.service';
   file: any;
   FiletoUpload = new FormData();
   hoverBox = false;
+  pdfSelected = 'No file chosen...';
   selectedPdf = false;
-  pdf: any;
+  pdf: any = 'assets/NO_FILE.pdf';
   dialogId: number;
   urlReference = {
     link: '',
@@ -48,10 +49,6 @@ import { ServerService } from 'src/app/service/server.service';
     this.render.removeClass(this.viewElement, 'none');
   }
 
-  // uploadFile() {
-
-  // }
-
   onFileSelected(event1) {
     this.file = event1.target.files[0] as File;
     this.selectedPdf = true;
@@ -64,7 +61,6 @@ import { ServerService } from 'src/app/service/server.service';
   }
 
   viewElement() {
-    console.log('ele');
     const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
     this.render.removeClass(viewElement, 'none');
     // tslint:disable-next-line:new-parens
@@ -96,6 +92,10 @@ import { ServerService } from 'src/app/service/server.service';
     this.render.addClass(dialog, 'dialogBGHide');
     this.render.addClass(dialog, 'none');
     if (flag === 2) {
+      const mainRow = this.el.nativeElement.getElementsByClassName('mainDiv')[0];
+      this.render.addClass(mainRow, 'none');
+      const submitBtn = this.el.nativeElement.getElementsByClassName('SubmitDiv')[0];
+      this.render.removeClass(submitBtn, 'none');
       this.viewElement();
     }
     if (flag === 3) {
@@ -150,6 +150,17 @@ import { ServerService } from 'src/app/service/server.service';
 
   viewText() {
     console.log(this.urlReference.data);
+  }
+
+  // Submit
+
+  publish() {
+    this.server.pdfFileUpload(this.FiletoUpload)
+      .subscribe((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      });
   }
 
 }

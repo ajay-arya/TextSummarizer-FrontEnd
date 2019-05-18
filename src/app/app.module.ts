@@ -20,6 +20,7 @@ import { RootComponent } from './pages/root/root.component';
 import { PdfComponent } from './uploads/pdf/pdf.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ViewerComponent } from './pages/viewer/viewer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     RootComponent,
     PdfComponent,
+    ViewerComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ export class ServerService {
   }
 
   pdfFileUpload(file: any) {
+    // return this.http.post(this.mainURL + '/', file);
     return this.http.post(this.mainURL + '/upload', file);
   }
 

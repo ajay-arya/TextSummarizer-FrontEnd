@@ -4,6 +4,24 @@
     font-size: 80px;
 }
 
+.SubmitDiv {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #91c4c8;
+    text-align: center;
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.43);
+    width: 250px;
+    position: absolute;
+    right: 0;
+}
+.SubmitDiv:hover {
+    color: white;
+    background: #86c4c9;
+}
+
 .BgWrapper {
     position: absolute;
     width: 100%;
@@ -29,7 +47,7 @@ input[type=text] {
     top: 50%;
     left: 50%;
     position: absolute;
-    color: #ee9166;
+    color: #66b2da;
     // ee9166
     font-size: 53px;
     transition: all 0.3s ease-in-out;
@@ -108,7 +126,6 @@ input[type=text] {
     opacity: 0;
 }
 
-
 .headbg {
     // background: #ee9166;
     background-image: linear-gradient(to bottom, #2f4a72, #335d8d, #3271a9, #2c86c5, #189ce1);
@@ -123,11 +140,16 @@ input[type=text] {
 .viewer {
     background: white;
     position: absolute;
+    margin-top: 25px;
     height: 100%;
     left: 50%;
     max-width: 1000px;
     transform: translate(-50%, 0);
     margin-bottom: 25px;
+    box-shadow: 0px 1px 23px #212121e8;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    overflow: scroll;
 }
 
 // .box {
