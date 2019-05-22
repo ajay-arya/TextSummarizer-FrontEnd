@@ -31,6 +31,8 @@ export class ViewerComponent implements OnInit {
       if (temp.Status === 'success') {
         this.server.data = temp.preprocessed;
         this.data = this.server.data;
+        this.server.summary = temp.summary;
+        this.summary = this.server.summary;
       }
     }, (err) => {
       console.log(err);

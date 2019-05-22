@@ -62,13 +62,13 @@
     </div>
 
     <div class="row viewer">
-      <pdf-viewer ng-if="!textFlag" src="{{pdf}}" [render-text]="true" [fit-to-page]="true" style="display: block;">
-      </pdf-viewer>
-      <div *ngIf="textFlag">
-        <!-- {{ urlReference.data }} -->
-        <iframe class="none" [src]="iframe" width=1000px height=1000px>
-          Sorry your browser does not support inline frames.
-        </iframe>
+      <div ng-if="!textFlag" class="ShowPdf">
+        <pdf-viewer  src="{{pdf}}" [render-text]="true" [fit-to-page]="true" style="display: block;">
+        </pdf-viewer>
+      </div>
+      <div class="showText" *ngIf="textFlag">
+        {{ urlReference.data }}
+        <!-- <iframe class="none" [src]="iframe" width=1000px height=1000px></iframe> -->
       </div>
     </div>
   </div>
@@ -104,7 +104,7 @@
   </div>
   <div class="dialogPdf">
 
-    <!--   <mat-form-field style="width:400px !important;">
+    <!-- <mat-form-field style="width:400px !important;">
         <input  matInput placeholder="Enter the URL for Wikipedia Article" [(ngModel)]="urlReference">
       </mat-form-field> -->
     Insert Link

@@ -8,11 +8,12 @@ import { MatFormField } from '@angular/material';
   providedIn: 'root'
 })
 export class ServerService {
-  url = 'http://127.0.0.1:5000/api';
+  url = 'http://127.0.0.1:5000/api/v1';
   mainURL = this.url;
   summary = 'summmary writesomethiggdsjgklsg   gkdsgnksggd  kdsgksg ggsdkd  dgd';
   data = 'data  anrejkdgsd sdnsdns sdjnsdng dsdnsdg fksdgksdngksndgsgsegnksg gesgsd sdgskgmgmewg';
   range = 0;
+  pdfFlag = false;
 
   // route: any = '';
 
@@ -31,12 +32,31 @@ export class ServerService {
     return this.http.post(this.mainURL + '/scrapeWiki', link);
   }
 
-  sendRange(range) {
-    return this.http.post(this.mainURL + '/range', range);
+  sendRange(range, flag) {
+    if (flag === 0) {
+      const dummy = { line: range, wiki: 'no' };
+      return this.http.post(this.mainURL + '/range', dummy);
+    } else {
+      const dummy = { line: range, wiki: 'yes' };
+      return this.http.post(this.mainURL + '/range', dummy);
+    }
+  }
+
+  sendWikiRange(range) {
+    const dummy = { line: range };
+    return this.http.post(this.mainURL + '/wikiRange', dummy);
   }
 
   getPreprossedData() {
-    const dummy = {data: 'data'};
-    return this.http.post(this.mainURL + '/getPreprocessed', dummy);
+    // const dummy = {link: 'data'};
+    // return this.http.post(this.mainURL + '/test', dummy);
+    const dummy = { data: 'data' };
+    return this.http.post(this.mainURL + '/getDetails', dummy);
+  }
+
+  summaryzeWiki(range) {
+    console.log('scrap', range);
+    const dummy = { line: range, data: this.data };
+    return this.http.post(this.mainURL + '/sumarizeWiki', dummy);
   }
 }

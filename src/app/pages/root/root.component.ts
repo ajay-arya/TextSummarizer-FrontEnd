@@ -110,16 +110,18 @@ import { DomSanitizer } from '@angular/platform-browser';
       this.viewElement();
     }
     if (flag === 3) {
-      console.log('url');
-      this.viewText();
-      this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
-      this.textFlag = false;
+      console.log('url', this.urlReference.link);
+      this.textFlag = true;
+      // this.viewText();
+      // this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
+      // this.textFlag = false;
       const mainRow = this.el.nativeElement.getElementsByClassName('mainDiv')[0];
       this.render.addClass(mainRow, 'none');
       const submitBtn = this.el.nativeElement.getElementsByClassName('SubmitDiv')[0];
       this.render.removeClass(submitBtn, 'none');
       const viewElement = this.el.nativeElement.getElementsByClassName('viewer')[0];
       this.render.removeClass(viewElement, 'none');
+      this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
     }
   }
 
@@ -147,7 +149,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   // URL adder
 
   addUrl() {
-    this.textFlag = false;
+    // ShowPdf
+    const pdfviewer = this.el.nativeElement.getElementsByClassName('ShowPdf')[0];
+    this.render.addClass(pdfviewer, 'none');
+    this.textFlag = true;
     if (this.urlReference.link !== '') {
       const dft = this.el.nativeElement.getElementsByClassName('dialogPdf')[this.dialogId];
       this.render.addClass(dft, 'none');
@@ -157,7 +162,9 @@ import { DomSanitizer } from '@angular/platform-browser';
       this.server.sendWikiUrl(this.urlReference)
         .subscribe((res) => {
           const temp: any = res;
+          console.log(res);
           this.urlReference.data = temp.scrapeText;
+          this.server.data = this.urlReference.data;
           this.render.addClass(wt, 'none');
           this.render.removeClass(dft, 'none');
           this.closeDialog(3);
@@ -176,18 +183,24 @@ import { DomSanitizer } from '@angular/platform-browser';
   // Submit
 
   publish() {
-    const loadingEle = this.el.nativeElement.getElementsByClassName('loading')[this.dialogId];
+    const loadingEle = this.el.nativeElement.getElementsByClassName('loading')[0];
     this.render.removeClass(loadingEle, 'none');
-    this.server.pdfFileUpload(this.FiletoUpload)
-      .subscribe((res) => {
-        console.log('res', res);
-        const temp: any = res;
-        if (temp.Status === 'success') {
-          this.navigate();
-        }
-      }, (err) => {
-        console.log(err);
-      });
+    if (!this.textFlag) {
+      this.server.pdfFlag = true;
+      this.server.pdfFileUpload(this.FiletoUpload)
+        .subscribe((res) => {
+          console.log('res', res);
+          const temp: any = res;
+          if (temp.Status === 'success') {
+            this.router.navigate(['/SpecifyRange']);
+          }
+        }, (err) => {
+          console.log(err);
+        });
+    } else {
+      this.server.pdfFlag = false;
+      this.router.navigate(['/SpecifyRange']);
+    }
   }
 
   // Navigate to viewer Component

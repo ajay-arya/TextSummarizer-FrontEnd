@@ -23,25 +23,48 @@ export class RangPageComponent implements OnInit {
   }
 
   slider(event) {
-    this.value = event.value;
+    this.value = event.value as number;
   }
 
   submit() {
-    console.log('got');
-    // const loadingEle = this.el.nativeElement.getElementsByClassName('loading')[0];
-    // this.render.removeClass(loadingEle, 'none');
+    // this.server.summaryzeWiki(this.value).subscribe((res) => {
+    //   console.log(res);
+    //   const temp: any = res;
+    //   this.server.data = temp.preprocessed;
+    //   this.server.summary = temp.summary;
+    //   this.router.navigate(['/view']);
+    // });
+
+    const loadingEle = this.el.nativeElement.getElementsByClassName('loading')[0];
+    this.render.removeClass(loadingEle, 'none');
     this.server.range = this.value;
-    const sendData = { range: this.value };
-    this.server.sendRange(this.value).subscribe((res) => {
-      // this.server.sendRange(sendData).subscribe((res) => {
-      console.log(res);
-      const temp: any = res;
-      if (temp.Status === 'success') {
-        this.router.navigate(['/view']);
-      } else {
-        alert(temp.error);
-      }
-    });
+    if (this.server.pdfFlag) {
+      console.log('got', this.value);
+      this.server.sendRange(this.value, 0).subscribe((res) => {
+        console.log(res);
+        const temp: any = res;
+        if (temp.Status === 'success') {
+          this.server.data = temp.preprocessed;
+          this.server.summary = temp.summary;
+          this.router.navigate(['/view']);
+        } else {
+          alert(temp.error);
+        }
+      });
+    } else {
+      console.log('elsepart wiki range');
+      this.server.sendRange(this.value, 1).subscribe((res) => {
+        console.log(res);
+        const temp: any = res;
+        if (temp.Status === 'success') {
+          this.server.data = temp.preprocessed;
+          this.server.summary = temp.summary;
+          this.router.navigate(['/view']);
+        } else {
+          alert(temp.error);
+        }
+      });
+    }
   }
 
 }
