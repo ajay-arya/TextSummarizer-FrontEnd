@@ -2,7 +2,8 @@
   <div class="headbg"></div>
 
   <div class="container">
-    <br><br>
+    <br>
+    <br>
     <img src="assets/images/bg.jpg" class="BgWrapper">
     <div class="row">
       <div class="col-sm">
@@ -19,8 +20,8 @@
     <div class="mainDiv">
       <div class="row first-row ">
         <div class="col-sm-12 col-md-4 ">
-          <div class="card mx-auto w-90 box " (mouseenter)='hoverBox = true; hover(0)' id="pdf-card"
-            (mouseleave)="hoverBox = false; hover(0);" (click)="click(0)" style="width: 18rem;">
+          <div class="card mx-auto w-90 box " (mouseenter)='hoverBox = true; hover(0)' id="pdf-card" (mouseleave)="hoverBox = false; hover(0);"
+            (click)="click(0)" style="width: 18rem;">
             <div class="card-body">
               <div class="CardContents">
                 PDF
@@ -32,8 +33,8 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-4 ">
-          <div class="card mx-auto w-90 box " (mouseenter)='hoverBox = true; hover(1)' id="pdf-card"
-            (mouseleave)="hoverBox = false; hover(1);" (click)="click(1)" style="width: 18rem;">
+          <div class="card mx-auto w-90 box " (mouseenter)='hoverBox = true; hover(1)' id="pdf-card" (mouseleave)="hoverBox = false; hover(1);"
+            (click)="click(1)" style="width: 18rem;">
             <div class="card-body">
               <div class="CardContents">
                 URL
@@ -45,8 +46,8 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-4 ">
-          <div class="card mx-auto w-90 box " (mouseenter)='hoverBox = true; hover(2)' id="pdf-card"
-            (mouseleave)="hoverBox = false; hover(2);" (click)="click(2)" style="width: 18rem;">
+          <div class="card mx-auto w-90 box " (mouseenter)='hoverBox = true; hover(2)' id="pdf-card" (mouseleave)="hoverBox = false; hover(2);"
+            (click)="click(2)" style="width: 18rem;">
             <div class="card-body">
               <div class="CardContents">
                 GGG
@@ -61,42 +62,34 @@
     </div>
 
     <div class="row viewer">
-      <pdf-viewer *ngIf="!textFlag" src="{{pdf}}" [render-text]="true" [fit-to-page]="true" style="display: block;">
+      <pdf-viewer ng-if="!textFlag" src="{{pdf}}" [render-text]="true" [fit-to-page]="true" style="display: block;">
       </pdf-viewer>
       <div *ngIf="textFlag">
-
-
-
-
-        
         <!-- {{ urlReference.data }} -->
-        <iframe [src]="iframe" width=1000px height=1000px>
+        <iframe class="none" [src]="iframe" width=1000px height=1000px>
           Sorry your browser does not support inline frames.
         </iframe>
-
-
-
-
-
-
       </div>
     </div>
   </div>
 </div>
 <div class="dialogBG dialogBGHide none">
   <div class="waitImg none">
-    <img src="assets/progress.gif" class="imgWrapper"><br>
+    <img src="assets/progress.gif" class="imgWrapper">
+    <br>
     <div class="" style="text-align: center;"> Uploading file.. </div>
   </div>
   <div class="dialogPdf">
-    Select file to upload <br>
+    Select file to upload
+    <br>
     <div class="file-upload">
       <div class="file-select">
         <div class="file-select-button" id="fileName">Choose File</div>
         <div class="file-select-name" id="noFile">{{ pdfSelected }}</div>
         <input type="file" accept=".pdf" name="chooseFile" id="chooseFile" (change)="onFileSelected($event)">
       </div>
-    </div> <br>
+    </div>
+    <br>
     <div style="margin-left: 60%;">
       <button mat-raised-button (click)="closeDialog()"> Cancle</button>
       <button style="margin-left: 15px;" mat-raised-button (click)="addPdf()"> Add PDF</button>
@@ -105,7 +98,8 @@
 </div>
 <div class="dialogBG dialogBGHide none">
   <div class="waitImg none">
-    <img src="assets/progress.gif" class="imgWrapper"><br>
+    <img src="assets/progress.gif" class="imgWrapper">
+    <br>
     <div class="" style="text-align: center;"> Extracting text.. </div>
   </div>
   <div class="dialogPdf">
@@ -113,14 +107,20 @@
     <!--   <mat-form-field style="width:400px !important;">
         <input  matInput placeholder="Enter the URL for Wikipedia Article" [(ngModel)]="urlReference">
       </mat-form-field> -->
-    Insert Link <br>
-    <input type="text" name="search" [(ngModel)]="urlReference.link"
-      placeholder="Enter the URL for Wikipedia Article..">
+    Insert Link
+    <br>
+    <input type="text" name="search" [(ngModel)]="urlReference.link" placeholder="Enter the URL for Wikipedia Article..">
     <!-- <input type="text" (keyup)="getUrl($event)"> -->
-    <br> <br>
+    <br>
+    <br>
     <div style="margin-left: 60%;">
       <button mat-raised-button (click)="closeDialog(1)"> Cancle</button>
       <button style="margin-left: 15px;" mat-raised-button (click)="addUrl()">Extract</button>
     </div>
   </div>
+</div>
+
+<!-- Loading Part -->
+<div class="loading none">
+  <app-wait-page></app-wait-page>
 </div>

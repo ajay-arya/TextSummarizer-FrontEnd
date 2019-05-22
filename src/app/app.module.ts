@@ -9,7 +9,8 @@ import {
   MatCheckboxModule,
   MatSliderModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,8 @@ import { PdfComponent } from './uploads/pdf/pdf.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ViewerComponent } from './pages/viewer/viewer.component';
+import { WaitPageComponent } from './dummy/wait-page/wait-page.component';
+import { RangPageComponent } from './dummy/rang-page/rang-page.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,14 @@ import { ViewerComponent } from './pages/viewer/viewer.component';
     RootComponent,
     PdfComponent,
     ViewerComponent,
+    WaitPageComponent,
+    RangPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     CommonModule,
     MatCheckboxModule,

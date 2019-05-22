@@ -8,10 +8,13 @@ import { MatFormField } from '@angular/material';
   providedIn: 'root'
 })
 export class ServerService {
-  url = 'http://0.0.0.0:88/api';
+  url = 'http://127.0.0.1:5000/api';
   mainURL = this.url;
   summary = 'summmary writesomethiggdsjgklsg   gkdsgnksggd  kdsgksg ggsdkd  dgd';
   data = 'data  anrejkdgsd sdnsdns sdjnsdng dsdnsdg fksdgksdngksndgsgsegnksg gesgsd sdgskgmgmewg';
+  range = 0;
+
+  // route: any = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -28,4 +31,12 @@ export class ServerService {
     return this.http.post(this.mainURL + '/scrapeWiki', link);
   }
 
+  sendRange(range) {
+    return this.http.post(this.mainURL + '/range', range);
+  }
+
+  getPreprossedData() {
+    const dummy = {data: 'data'};
+    return this.http.post(this.mainURL + '/getPreprocessed', dummy);
+  }
 }

@@ -1,0 +1,20 @@
+<div class="body">
+  <div class="rangeBG">
+    <div class="text">
+      <strong>
+        HOW SUMMARY HAS TO GENERATE...
+      </strong>
+    </div>
+    <div class="range">
+      <strong class="sliderdiv">
+        SHORT&nbsp;
+        <mat-slider class="slider" (change)="slider($event)" min="5" max="15">
+        </mat-slider> LONG
+      </strong>
+      <button mat-raised-button class="button" (click)='submit()'>Submit</button>
+    </div>
+  </div>
+</div>
+<div class="loading none">
+  <app-wait-page></app-wait-page>
+</div>

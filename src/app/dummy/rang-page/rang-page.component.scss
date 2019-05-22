@@ -1,0 +1,48 @@
+.range {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    padding: 50px;
+    border-radius: 10px;
+    background: #ffffffa6;
+    transform: translate(-50%, -50%);
+}
+
+.text {
+    color: white;
+    margin: 75px;
+    font-size: 20px;
+}
+
+.body {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background-color: #117ed8;
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.43);
+    z-index: -1;
+}
+
+.rangeBG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #56565673;
+}
+
+.button {
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.sliderdiv {
+    color: #306c9ee6;
+    padding-top: 5px;
+}
+
+.slider {
+    width: 85%;
+}

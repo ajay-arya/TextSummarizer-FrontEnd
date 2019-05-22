@@ -99,6 +99,8 @@ import { DomSanitizer } from '@angular/platform-browser';
     this.render.addClass(dialog, 'dialogBGHide');
     this.render.addClass(dialog, 'none');
     if (flag === 2) {
+      console.log('pdf');
+      this.textFlag = false;
       const mainRow = this.el.nativeElement.getElementsByClassName('mainDiv')[0];
       this.render.addClass(mainRow, 'none');
       const submitBtn = this.el.nativeElement.getElementsByClassName('SubmitDiv')[0];
@@ -108,9 +110,10 @@ import { DomSanitizer } from '@angular/platform-browser';
       this.viewElement();
     }
     if (flag === 3) {
+      console.log('url');
       this.viewText();
       this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlReference.link);
-      this.textFlag = true;
+      this.textFlag = false;
       const mainRow = this.el.nativeElement.getElementsByClassName('mainDiv')[0];
       this.render.addClass(mainRow, 'none');
       const submitBtn = this.el.nativeElement.getElementsByClassName('SubmitDiv')[0];
@@ -144,6 +147,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   // URL adder
 
   addUrl() {
+    this.textFlag = false;
     if (this.urlReference.link !== '') {
       const dft = this.el.nativeElement.getElementsByClassName('dialogPdf')[this.dialogId];
       this.render.addClass(dft, 'none');
@@ -172,12 +176,26 @@ import { DomSanitizer } from '@angular/platform-browser';
   // Submit
 
   publish() {
+    const loadingEle = this.el.nativeElement.getElementsByClassName('loading')[this.dialogId];
+    this.render.removeClass(loadingEle, 'none');
     this.server.pdfFileUpload(this.FiletoUpload)
       .subscribe((res) => {
-        console.log(res);
+        console.log('res', res);
+        const temp: any = res;
+        if (temp.Status === 'success') {
+          this.navigate();
+        }
       }, (err) => {
         console.log(err);
       });
+  }
+
+  // Navigate to viewer Component
+
+  navigate() {
+    setTimeout(() => {
+      this.router.navigate(['/SpecifyRange']);
+    }, 200);
   }
 
 }
